@@ -1,0 +1,76 @@
+---
+import Main from '../layouts/Main.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import ProjectSearch from '../components/ProjectSearch.astro';
+import ProjectFilter from '../components/ProjectFilter.astro';
+import { getCollection } from 'astro:content';
+
+import "../styles/global.css";
+
+const projects = await getCollection('projects');
+const sorted = projects.sort((a, b) =>
+  new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
+
+const allTags = [...new Set(projects.flatMap(p => p.data.tags))].sort();
+---
+
+<Main title="Arjen Backeljauw · Projects" description="Projects">
+  <ProjectSearch count={projects.length} />
+  <ProjectFilter tags={allTags} />
+
+  <div class="project-list" id="project-list">
+    {sorted.map((post, index) => (
+      <ProjectCard
+        title={post.data.title}
+        description={post.data.description}
+        tags={post.data.tags}
+        pubDate={post.data.pubDate}
+        num={index + 1}
+        slug={post.data.slug}
+      />
+    ))}
+  </div>
+</Main>
+
+<script>
+const searchInput = document.getElementById('search') as HTMLInputElement;
+const filterButtons = document.querySelectorAll('[data-filter-btn]');
+const projectItems = document.querySelectorAll('[data-card]');
+
+  let activeTag = 'all';
+  let searchQuery = '';
+
+  function filter() {
+    projectItems.forEach(item => {
+      const tags = item.getAttribute('data-tags')?.split(',') ?? [];
+      const title = item.getAttribute('data-title') ?? '';
+
+      const matchesTag = activeTag === 'all' || tags.includes(activeTag);
+      const matchesSearch = title.includes(searchQuery) ||
+                            tags.some(t => t.includes(searchQuery));
+
+      item.classList.toggle('hidden', !matchesTag || !matchesSearch);
+    });
+  }
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeTag = btn.getAttribute('data-tag') ?? 'all';
+      filter();
+    });
+  });
+
+  searchInput.addEventListener('input', (e) => {
+    searchQuery = (e.target as HTMLInputElement).value.toLowerCase();
+    filter();
+  });
+</script>
+
+<style>
+  :global([data-card].hidden) {
+    display: none;
+  }
+</style>

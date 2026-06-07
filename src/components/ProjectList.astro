@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectCard from './ProjectCard.astro';
+
+const {show} = Astro.props;
+const posts = await getCollection('projects', (post) => {
+    if (show) {
+        return post.data.show
+    } else {
+        return true
+    }
+});
+---
+
+<div class="project-list">
+    {posts.map((post, index) => (
+        <ProjectCard
+            title={post.data.title}
+            description={post.data.description}
+            tags={post.data.tags}
+            pubDate={post.data.pubDate}
+            num={index+1}
+            slug={post.data.slug}
+        />
+    ))}
+</div>
+<style>
+
+</style>

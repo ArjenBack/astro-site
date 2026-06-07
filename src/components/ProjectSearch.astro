@@ -1,0 +1,43 @@
+---
+const { count } = Astro.props;
+---
+
+<div class="projects-meta">
+    <span class="projects-count">{count} projects</span>
+    <input
+        type="text"
+        id="search"
+        placeholder="search..."
+        autocomplete="off"
+    />
+</div>
+
+<style>
+.projects-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.projects-count {
+    color: var(--fg4);
+    font-size: 0.8rem;
+    font-family: "JetBrains Mono", monospace;
+}
+
+#search {
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--fg4);
+    color: var(--fg);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+    width: 160px;
+    outline: none;
+}
+
+#search::placeholder {
+    color: var(--fg4);
+}
+</style>

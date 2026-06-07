@@ -1,0 +1,50 @@
+---
+import '../styles/global.css';
+const {title, description } = Astro.props;
+const year = new Date().getFullYear();
+import { Icon } from 'astro-icon/components';
+---
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content={description} />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+        <title>{title}</title>
+    </head>
+    <body >
+        <div class="palette-row">
+            <span class="pc" style="background:var(--yellow);"></span>
+            <span class="pc" style="background:var(--red);"></span>
+            <span class="pc" style="background:var(--green);"></span>
+            <span class="pc" style="background:var(--blue);"></span>
+            <span class="pc" style="background:var(--purple);"></span>
+            <span class="pc" style="background:var(--orange);"></span>
+            <span class="pc" style="background:var(--aqua);"></span>
+        </div>
+          <nav class="nav">
+            <a href="/" class="nav-name">Arjen Backeljauw</span>
+            <div class="nav-links">
+                    <a href="/projects">projects</a>
+                <a href="/#about">about me</a>
+                <a href="mailto:arjen@backeljauw.be?subject=[from: portfolio]&body=Hi Arjen,%0A%0A">contact</a>
+            </div>
+          </nav>
+        <main>
+            <slot/>
+        </main>
+        <footer class="footer">
+            <a style="color:var(--fg)" href="mailto:arjen@backeljauw.be?subject=[from: portfolio]&body=Hi Arjen,%0A%0A">arjen@backeljauw.be</a>
+            <span>© {year} Arjen Backeljauw</span>
+            <div>
+            <a href="https://github.com/ArjenBack" target="_blank" rel="noopener">
+                <Icon name="mdi:github" size={24} />
+            </a>
+            <a href="https://linkedin.com/in/arjen-backeljauw-173412195" target="_blank" rel="noopener" aria-label="LinkedIn" style="color:var(--aqua)">
+
+                <Icon name="mdi:linkedin" size={24} />
+            </a>
+            </div>
+        </footer>
+    </body>
+</html>

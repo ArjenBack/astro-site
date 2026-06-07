@@ -1,0 +1,235 @@
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg0: #1d2021;
+  --bg: #282828;
+  --bg1: #3c3836;
+  --bg2: #504945;
+  --bg3: #7c6f64;
+  --fg: #ddc7a1;
+  --fg2: #d4be98;
+  --fg3: #a89984;
+  --fg4: #928374;
+  --yellow: #d79921;
+  --orange: #e78a4e;
+  --red: #ea6962;
+  --green: #98971a;
+  --blue: #7daea3;
+  --purple: #d3869b;
+  --aqua: #89b482;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "EB Garamond", Georgia, serif;
+  padding: 3rem 2rem 4rem;
+  margin: 0 auto;
+  max-width: 860px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4rem;
+  border-bottom: 0.5px solid var(--bg3);
+  padding-bottom: 1rem;
+}
+.nav-name {
+  font-size: 1.4em;
+  font-weight: 500;
+  color: var(--fg);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+.nav-name:hover {
+    color: var(--yellow);
+}
+.nav-links {
+    text-transform: uppercase;
+  display: flex;
+  gap: 1.5rem;
+}
+.nav-links a {
+  font-size: 0.8em;
+  color: var(--fg4);
+  text-decoration: none;
+  font-family: "JetBrains Mono", monospace;
+}
+.nav-links a:hover {
+  color: var(--yellow);
+}
+
+.hero {
+  margin-bottom: 3.5rem;
+}
+.hero-title {
+  font-size: 2rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+  color: var(--fg);
+}
+.hero-sub {
+  font-size: 1rem;
+  color: var(--fg3);
+  line-height: 1.7;
+  max-width: 480px;
+}
+.hero-meta {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--fg4);
+  display: flex;
+  gap: 1.5rem;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--fg4);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.project-item {
+  padding: 1.25rem 0;
+  border-bottom: 0.5px solid var(--bg2);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 1rem;
+  cursor: pointer;
+    text-decoration: none;
+}
+.project-item:first-child {
+  border-top: 0.5px solid var(--bg2);
+}
+.project-item:hover .proj-title {
+  color: var(--yellow);
+}
+
+.proj-num {
+  font-size: 0.8rem;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--fg4);
+  margin-bottom: 0.35rem;
+}
+.proj-title {
+  font-size: 1.3rem;
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 0.3rem;
+  color: var(--fg);
+  transition: color 0.15s;
+}
+.proj-desc {
+  font-size: 1rem;
+  color: var(--fg3);
+  line-height: 1.6;
+}
+.proj-tags {
+  display: flex;
+  gap: 6px;
+  margin-top: 0.6rem;
+  flex-wrap: wrap;
+}
+.tag {
+  font-size: 0.6rem;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--fg4);
+  background: var(--bg1);
+  border: 0.5px solid var(--bg3);
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+
+.proj-right {
+  text-align: right;
+  padding-top: 4px;
+  color: var(--fg4);
+}
+.proj-status {
+  font-size: 0.6rem;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--fg4);
+}
+.proj-status.done {
+  color: var(--teal);
+}
+.proj-status.wip {
+  color: var(--yellow);
+}
+.proj-pdf {
+  font-size: 11px;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--aqua);
+  margin-top: 6px;
+  display: block;
+  text-decoration: none;
+}
+.proj-pdf:hover {
+  color: var(--yellow);
+}
+
+.about-section {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 0.5px solid var(--bg2);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+.about-block h3 {
+  font-size: 0.8rem;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--fg4);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.about-block p {
+  font-size: 0.9rem;
+  color: var(--fg3);
+  line-height: 1.75;
+}
+
+.footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 0.5px solid var(--bg3);
+  font-size: 0.8em;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--fg4);
+  display: flex;
+  justify-content: space-between;
+}
+.footer a {
+  color: var(--green);
+  text-decoration: none;
+}
+.footer a:hover {
+  color: var(--yellow);
+}
+
+.palette-row {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 2rem;
+}
+.palette-top {
+  display: flex;
+  gap: 0px;
+  margin-bottom: 0rem;
+}
+.pc {
+  height: 8px;
+  flex: 1;
+  border-radius: 2px;
+}

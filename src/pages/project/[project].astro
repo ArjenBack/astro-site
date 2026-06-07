@@ -1,0 +1,37 @@
+---
+import Main from '../../layouts/Main.astro';
+import Tags from '../../components/Tags.astro';
+import {getCollection, render } from 'astro:content';
+import '../../styles/project.css';
+
+export async function getStaticPaths() {
+    const projects = await getCollection('projects');
+      return projects.map((project) => ({
+    params: { project: project.data.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<Main>
+    <div >
+        <div class="hero">
+            <h1 class="hero-title">{project.data.title}</h1>
+            <Tags tags={project.data.tags} />
+            </div>
+            <div class="hero-meta">
+                <span>{project.data.pubDate}</span>
+            </div>
+        </div>
+        <div class="wrapper">
+            <Content />
+        </div>
+    </div>
+</Main>
+
+<style is:global>
+  @import '../../styles/project.css';
+</style>

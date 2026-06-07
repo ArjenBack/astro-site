@@ -1,17 +1,31 @@
 ---
-
+import Main from '../layouts/Main.astro';
+import ProjectList from '../components/ProjectList.astro';
 ---
+<Main title="Arjen Backeljauw" description="Hey, I'm Arjen and this is my portfolio page">
+    <div class="hero">
+        <h1 class="hero-title">Hardware, software,<br> and the occasional fire hazard.</h1>
+        <p class="hero-sub">KU Leuven · BSc Electrical Engineering</p>
+        <div class="hero-meta">
+            <span>Antwerp, BE</span>
+        </div>
+    </div>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+
+    <div class="section-label">
+        projects
+    </div>
+
+    <ProjectList show={true}  />
+
+    <div class="about-section" id="about">
+        <div class="about-block">
+          <h3>About me</h3>
+            <p>Second-year EE student at KU Leuven. Interested in embedded systems, data privacy, cryptography and more.<br> FYI: it only caught fire once. I think.</p>
+        </div>
+        <div class="about-block">
+            <h3>Tools</h3>
+            <p>KiCad · LTspice · STM32 · MATLAB · LaTeX · Git · Neovim</p>
+        </div>
+    </div>
+</Main>

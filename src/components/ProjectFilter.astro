@@ -1,0 +1,46 @@
+---
+const { tags } = Astro.props;
+
+import { tagColors } from '../lib/tagColors';
+---
+
+<div class="filter-tags">
+  <button class="filter-tag active" data-filter-btn data-tag="all">all</button>
+  {tags.map((tag: string) => (
+    <button
+      class="filter-tag"
+      data-filter-btn
+      data-tag={tag}
+      style={`--tag-color: ${tagColors[tag.toLowerCase()] ?? "var(--fg)"}`}
+    >
+      {tag}
+    </button>
+  ))}
+</div>
+
+<style>
+.filter-tags {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.filter-tag {
+  background: none;
+  border: none;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+  color: var(--fg4);
+  cursor: pointer;
+  padding: 0;
+}
+
+.filter-tag.active {
+  color: var(--tag-color, var(--fg));
+}
+
+.filter-tag:hover {
+  color: var(--tag-color, var(--fg));
+}
+</style>
