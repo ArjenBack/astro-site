@@ -4,7 +4,7 @@ const { title, description, pubDate, tags, num, slug } = Astro.props;
 import "../styles/global.css";
 ---
 
-<a href={`/project/${slug}`} class="project-item" data-card data-tags={tags.join(',')} data-title={title.toLowerCase()}>
+<a href={`${import.meta.env.BASE_URL}project/${slug}`} class="project-item" data-card data-tags={tags.join(',')} data-title={title.toLowerCase()}>
   <div class="proj-left">
     <div class="proj-num">{num}</div>
     <div class="proj-title">{title}</div>
