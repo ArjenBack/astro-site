@@ -22,4 +22,5 @@ export default defineConfig({
         icon(),
         mdx(),
     ],
+    site: 'https://ArjenBack.github.io',
 });
