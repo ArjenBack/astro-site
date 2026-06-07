@@ -23,4 +23,5 @@ export default defineConfig({
         mdx(),
     ],
     site: 'https://ArjenBack.github.io',
+    base: '/astro-site',
 });
