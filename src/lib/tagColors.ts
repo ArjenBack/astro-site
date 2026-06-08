@@ -7,7 +7,7 @@ export const tagColors: Record<string, string> = {
   neopixel: "var(--aqua)",
   rust:     "var(--blue)",
   c:        "var(--blue)",
-  cpp:      "var(--blue)",
+  "c++":      "var(--blue)",
   linux:    "var(--purple)",
   vim:      "var(--purple)",
 };
